@@ -3,7 +3,7 @@ import os
 import logging
 import tensorflow as tf
 
-from shap import DeepExplainer, summary_plot
+import shap
 
 from tensorflow import keras
 from tensorflow.keras import layers
@@ -82,10 +82,10 @@ class NeuralNetworkTF(Model):
         plt.close()
 
         print("Saving importances")
-        explainer = DeepExplainer(self.model, X_test_t)
+        explainer = shap.KernelExplainer(self.model, X_test_t)
         shap_values = explainer.shap_values(X_test_t)
 
-        summary_plot(shap_values, X_test_t, feature_names=X_test.columns, max_display=50, plot_size=(16, 20), show=False)
+        shap.summary_plot(shap_values, X_test_t, feature_names=X_test.columns, max_display=50, plot_size=(16, 20), show=False)
         plt.savefig(path + '/feature_importances.png')
         plt.close()
 

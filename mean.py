@@ -81,7 +81,7 @@ class MeanModel():
             predictions = X.mean(axis=1)
 
             mae = mean_absolute_error(y, predictions)
-            mbe = mean_bias_error(y, predictions)
+            mbe = np.mean(predictions - y)
             mse = mean_squared_error(y, predictions)
             msre = np.sqrt(mean_squared_error(y, predictions))
             evs = explained_variance_score(y, predictions)
@@ -129,7 +129,7 @@ class MeanModel():
             predictions = X.mean(axis=1)
 
             mae = mean_absolute_error(y, predictions)
-            mbe = mean_bias_error(y, predictions)
+            mbe = np.mean(predictions - y)
             mse = mean_squared_error(y, predictions)
             msre = np.sqrt(mean_squared_error(y, predictions))
             evs = explained_variance_score(y, predictions)
@@ -183,7 +183,7 @@ class MeanModel():
                 predictions = X.mean(axis=1)
 
                 mae = mean_absolute_error(y, predictions)
-                mbe = mean_bias_error(y, predictions)
+                mbe = np.mean(predictions - y)
                 mse = mean_squared_error(y, predictions)
                 msre = np.sqrt(mean_squared_error(y, predictions))
                 evs = explained_variance_score(y, predictions)
@@ -240,7 +240,7 @@ class MeanModel():
             predictions = X.mean(axis=1)
 
             mae = mean_absolute_error(y, predictions)
-            mbe = mean_bias_error(y, predictions)
+            mbe = np.mean(predictions - y)
             mse = mean_squared_error(y, predictions)
             msre = np.sqrt(mean_squared_error(y, predictions))
             evs = explained_variance_score(y, predictions)
@@ -297,7 +297,7 @@ class MeanModel():
                     predictions = X.mean(axis=1)
 
                     mae = mean_absolute_error(y, predictions)
-                    mbe = mean_bias_error(y, predictions)
+                    mbe = np.mean(predictions - y)
                     mse = mean_squared_error(y, predictions)
                     msre = np.sqrt(mean_squared_error(y, predictions))
                     evs = explained_variance_score(y, predictions)

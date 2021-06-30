@@ -6,7 +6,7 @@ import logging
 import pandas as pd
 import numpy as np
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, mean_bias_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score
 from sklearn.preprocessing import MinMaxScaler
 
 import matplotlib.pyplot as plt
@@ -44,7 +44,7 @@ class Model(ABC):
         for column in range(0, len(y_test.columns)):
 
             mae = mean_absolute_error(y_test.values[:, column], predictions[:, column])
-            mbe = mean_bias_error(y_test.values[:, column], predictions[:, column])
+            mbe = np.mean(predictions[:, column] - y_test.values[:, column])
             mse = mean_squared_error(y_test.values[:, column], predictions[:, column])
             msre = np.sqrt(mean_squared_error(y_test.values[:, column], predictions[:, column]))
             evs = explained_variance_score(y_test.values[:, column], predictions[:, column])
@@ -90,7 +90,7 @@ class Model(ABC):
             for column in range(0, len(y.columns)):
 
                 mae = mean_absolute_error(y.values[:, column], predictions[:, column])
-                mbe = mean_bias_error(y.values[:, column], predictions[:, column])
+                mbe = np.mean(predictions[:, column] - y.values[:, column])
                 mse = mean_squared_error(y.values[:, column], predictions[:, column])
                 msre = np.sqrt(mean_squared_error(y.values[:, column], predictions[:, column]))
                 evs = explained_variance_score(y.values[:, column], predictions[:, column])
@@ -137,7 +137,7 @@ class Model(ABC):
             for column in range(0, len(y.columns)):
 
                 mae = mean_absolute_error(y.values[:, column], predictions[:, column])
-                mbe = mean_bias_error(y.values[:, column], predictions[:, column])
+                mbe = np.mean(predictions[:, column] - y.values[:, column])
                 mse = mean_squared_error(y.values[:, column], predictions[:, column])
                 msre = np.sqrt(mean_squared_error(y.values[:, column], predictions[:, column]))
                 evs = explained_variance_score(y.values[:, column], predictions[:, column])
@@ -191,7 +191,7 @@ class Model(ABC):
                 for column in range(0, len(y.columns)):
 
                     mae = mean_absolute_error(y.values[:, column], predictions[:, column])
-                    mbe = mean_bias_error(y.values[:, column], predictions[:, column])
+                    mbe = np.mean(predictions[:, column] - y.values[:, column])
                     mse = mean_squared_error(y.values[:, column], predictions[:, column])
                     msre = np.sqrt(mean_squared_error(y.values[:, column], predictions[:, column]))
                     evs = explained_variance_score(y.values[:, column], predictions[:, column])
@@ -249,7 +249,7 @@ class Model(ABC):
             for column in range(0, len(y.columns)):
 
                 mae = mean_absolute_error(y.values[:, column], predictions[:, column])
-                mbe = mean_bias_error(y.values[:, column], predictions[:, column])
+                mbe = np.mean(predictions[:, column] - y.values[:, column])
                 mse = mean_squared_error(y.values[:, column], predictions[:, column])
                 msre = np.sqrt(mean_squared_error(y.values[:, column], predictions[:, column]))
                 evs = explained_variance_score(y.values[:, column], predictions[:, column])
@@ -307,7 +307,7 @@ class Model(ABC):
                     for column in range(0, len(y.columns)):
 
                         mae = mean_absolute_error(y.values[:, column], predictions[:, column])
-                        mbe = mean_bias_error(y.values[:, column], predictions[:, column])
+                        mbe = np.mean(predictions[:, column] - y.values[:, column])
                         mse = mean_squared_error(y.values[:, column], predictions[:, column])
                         msre = np.sqrt(mean_squared_error(y.values[:, column], predictions[:, column]))
                         evs = explained_variance_score(y.values[:, column], predictions[:, column])

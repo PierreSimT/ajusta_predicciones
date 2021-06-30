@@ -6,7 +6,7 @@ import logging
 import pandas as pd
 import numpy as np
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score, mean_bias_error
+from sklearn.metrics import mean_squared_error, mean_absolute_error, explained_variance_score
 from sklearn.preprocessing import MinMaxScaler
 
 import matplotlib.pyplot as plt
@@ -38,7 +38,7 @@ class Model(ABC):
         predictions = self.model.predict(X_test)
 
         mae = mean_absolute_error(y_test, predictions)
-        mbe = mean_bias_error(y_test, predictions)
+        mbe = np.mean(predictions - y_test.values)
         mse = mean_squared_error(y_test, predictions)
         msre = np.sqrt(mean_squared_error(y_test, predictions))
         evs = explained_variance_score(y_test, predictions)
@@ -80,9 +80,8 @@ class Model(ABC):
 
             predictions = self.model.predict(X)
 
-
             mae = mean_absolute_error(y, predictions)
-            mbe = mean_bias_error(y, predictions)
+            mbe = np.mean(predictions - y.values)
             mse = mean_squared_error(y, predictions)
             msre = np.sqrt(mean_squared_error(y, predictions))
             evs = explained_variance_score(y, predictions)
@@ -128,7 +127,7 @@ class Model(ABC):
             predictions = self.model.predict(X)
 
             mae = mean_absolute_error(y, predictions)
-            mbe = mean_bias_error(y, predictions)
+            mbe = np.mean(predictions - y.values)
             mse = mean_squared_error(y, predictions)
             msre = np.sqrt(mean_squared_error(y, predictions))
             evs = explained_variance_score(y, predictions)
@@ -181,7 +180,7 @@ class Model(ABC):
                 predictions = self.model.predict(X)
 
                 mae = mean_absolute_error(y, predictions)
-                mbe = mean_bias_error(y, predictions)
+                mbe = np.mean(predictions - y.values)
                 mse = mean_squared_error(y, predictions)
                 msre = np.sqrt(mean_squared_error(y, predictions))
                 evs = explained_variance_score(y, predictions)
@@ -236,7 +235,7 @@ class Model(ABC):
             predictions = self.model.predict(X)
 
             mae = mean_absolute_error(y, predictions)
-            mbe = mean_bias_error(y, predictions)
+            mbe = np.mean(predictions - y.values)
             mse = mean_squared_error(y, predictions)
             msre = np.sqrt(mean_squared_error(y, predictions))
             evs = explained_variance_score(y, predictions)
@@ -291,7 +290,7 @@ class Model(ABC):
                     predictions = self.model.predict(X)
 
                     mae = mean_absolute_error(y, predictions)
-                    mbe = mean_bias_error(y, predictions)
+                    mbe = np.mean(predictions - y.values)
                     mse = mean_squared_error(y, predictions)
                     msre = np.sqrt(mean_squared_error(y, predictions))
                     evs = explained_variance_score(y, predictions)

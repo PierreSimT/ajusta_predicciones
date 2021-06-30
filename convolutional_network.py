@@ -64,7 +64,7 @@ class ConvolutionalNetwork(Model):
             y_test (DataFrame): Resultados del conjunto de validacion
             n_epochs (int): Numero de epochs en caso de entrenar una red neuronal
         """
-        
+
         path = output_directory + '/' + self.name
 
         try:
@@ -92,7 +92,7 @@ class ConvolutionalNetwork(Model):
         plt.close()
 
         print("Saving importances")
-        explainer = shap.DeepExplainer(self.model, X_test_t)
+        explainer = shap.KernelExplainer(self.model, X_test_t)
         shap_values = explainer.shap_values(X_test_t)
 
         shap.summary_plot(shap_values, X_test_t, feature_names=X_test.columns, max_display=50, plot_size=(16, 20), show=False)
